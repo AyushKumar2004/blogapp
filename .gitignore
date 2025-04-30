@@ -1,0 +1,25 @@
+# Environment files
+.env
+**/.env
+
+# Node dependencies
+**/node_modules
+
+# Build outputs
+**/build
+**/dist
+
+
+# Build files
+frontend/build/
+frontend/dist/
+backend/dist/
+backend/__pycache__/
+
+# Logs
+*.log
+
+# OS & editor junk
+.DS_Store
+Thumbs.db
+*.swp
