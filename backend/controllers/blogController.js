@@ -101,9 +101,29 @@ export const updateBlog=async(req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return req.status(404).json({error:"id not found"})
     }
-    const updatedBlog=await Blog.findByIdAndUpdate(id,req.body,{new:true});
-    if(!updatedBlog){
-        return res.status(404).json({error:"blog not found"});
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
     }
-    res.status(200).json(updatedBlog);
+
+    // Update fields
+    blog.title = req.body.title || blog.title;
+    blog.category = req.body.category || blog.category;
+    blog.about = req.body.about || blog.about;
+
+    // Handle image upload
+    if (req.files && req.files.blogImage) {
+      // Optional: delete old image from cloudinary using blog.blogImage.public_id
+
+      const uploaded = await cloudinary.uploader.upload(
+        req.files.blogImage.tempFilePath
+      );
+      blog.blogImage = {
+        url: uploaded.secure_url,
+        public_id: uploaded.public_id
+      }; // or { url: uploaded.secure_url } if that's your schema
+    }
+
+    await blog.save();
+    res.status(200).json(blog);
 }

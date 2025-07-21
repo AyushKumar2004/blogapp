@@ -10,7 +10,7 @@ const About = () => {
       <p>
         This is{" "}
         <strong className="text-blue-800 font-semibold hover:scale-105 duration-500">
-          {profile?.user?.name}
+          {profile?.name}
         </strong>{" "}
         a proficient full stack developer with a robust skill set spanning both
         front-end and back-end technologies. With a passion for building

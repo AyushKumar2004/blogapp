@@ -33,7 +33,7 @@ const Login = () => {
         duration: 3000,
       });
       setIsAuthenticated(true);
-      setProfile(data)
+      setProfile(data?.user)
       setEmail('');
       setPassword('');
       setRole('');

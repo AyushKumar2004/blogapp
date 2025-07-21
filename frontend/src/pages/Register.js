@@ -41,14 +41,17 @@ const Register = () => {
     formData.append('photo',photo);
     try{
       const {data}=await axios.post("http://localhost:5000/api/users/register",formData,{
+        withCredentials:true,
         headers:{
-          "Content-Type":"mutipart-form-data"
+          "Content-Type":"multipart/form-data"
         }
       });
-      console.log(data);
+      console.log("this is my data",data);
       toast.success(data.message || 'User Registered Successful')
-      setProfile(data)
+      
+      localStorage.setItem("jwt", data.token); 
       setIsAuthenticated(true);
+      setProfile(data.newUser);
       setEducation('');
       setEmail('');
       setName('');

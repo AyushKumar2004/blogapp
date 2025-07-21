@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const Sidebar = ({component,setComponent}) => {
     const {profile,isAuthenticated,setIsAuthenticated}=useAuth();
-    console.log(profile?.user);
+    console.log(profile);
     const navigate=useNavigate();
 
     const handleComponents=(value)=>{
@@ -30,7 +30,7 @@ const Sidebar = ({component,setComponent}) => {
         navigate("/");
       }catch(error){
         console.log(error);
-        toast.error(error.data.message || "failed to logout")
+        toast.error( "failed to logout")
       }
     }
 
@@ -51,8 +51,8 @@ const Sidebar = ({component,setComponent}) => {
           <BiLeftArrowAlt className='text-2xl' />
           </div>
           <div>
-            <img className='w-24 h-24 rounded-full mx-auto mb-2' src={profile?.user?.photo?.url}></img>
-            <p className='text-lg text-center font-semibold'>{profile?.user?.name}</p>
+            <img className='w-24 h-24 rounded-full mx-auto mb-2' src={profile?.photo?.url || profile?.user?.photo?.url}></img>
+            <p className='text-lg text-center font-semibold'>{profile?.user?.name || profile?.name}</p>
           </div>
           <ul className='space-y-6 mx-4'>
             <button onClick={()=>handleComponents("My Blogs")} className='w-full px-4 py-2 bg-green-500 rounded-lg hover:bg-green-700 transition duration-300'>MY BLOGS</button>

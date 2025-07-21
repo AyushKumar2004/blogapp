@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 const Navbar = () => {
 
     const [show,setShow]=useState(false)
-    const {profile,isAuthenticated,setIsAuthenticated}=useAuth();
+    const {profile,isAuthenticated,setProfile,setIsAuthenticated}=useAuth();
     console.log(profile)
     const navigate=useNavigate();
 
@@ -25,7 +25,7 @@ const Navbar = () => {
           navigate("/");
         }catch(error){
           console.log(error);
-          toast.error(error.data.message || "failed to logout")
+          toast.error("failed to logout")
         }
       }
 
@@ -50,8 +50,8 @@ const Navbar = () => {
                     }
                 </div>
             </div>
-            <div className='space-x-2 hidden md:flex'>
-            {isAuthenticated && profile?.user?.role==="admin"
+            <div className='space-x-2 flex'>
+            {isAuthenticated && (profile?.role==="admin"||profile?.user?.role==="admin")
             ?(<Link to='/dashboard' className='uppercase bg-blue-600 text-white font-semibold hover:bg-blue-800 duration-300 px-4 py-2 rounded'>Dashboard</Link>
             ):("")
             }

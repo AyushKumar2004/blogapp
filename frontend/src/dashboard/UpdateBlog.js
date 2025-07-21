@@ -11,8 +11,8 @@ const UpdateBlog = () => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [about, setAbout] = useState("");
-
-  const [blogImage, setBlogImage] = useState("");
+  const [blogImageUrl, setBlogImageUrl] = useState("");  // from backend
+  const [blogImageFile, setBlogImageFile] = useState(null);  // from upload
   const [blogImagePreview, setBlogImagePreview] = useState("");
 
   const changePhotoHandler = (e) => {
@@ -22,7 +22,7 @@ const UpdateBlog = () => {
     reader.readAsDataURL(file);
     reader.onload = () => {
       setBlogImagePreview(reader.result);
-      setBlogImage(file);
+      setBlogImageFile(file);
     };
   };
 
@@ -39,11 +39,11 @@ const UpdateBlog = () => {
           }
         );
         console.log(data);
-        toast.success(data.message || "blog fetched successfully");
+        toast.success( "blog fetched successfully");
         setTitle(data?.title);
         setCategory(data?.category);
         setAbout(data?.about);
-        setBlogImage(data?.blogImage?.url);
+        setBlogImageUrl(data?.blogImage?.url || data?.blogImage);
         } catch (error) {
           console.log(error);
           toast.error(error.message || "Please fill the required fields");
@@ -59,7 +59,12 @@ const UpdateBlog = () => {
     formData.append("category", category);
     formData.append("about", about);
 
-    formData.append("blogImage", blogImage);
+    if(blogImageFile){
+      console.log(blogImageFile);
+      formData.append("blogImage", blogImageFile);
+    }
+    
+
     try {
       const { data } = await axios.put(
         `http://localhost:5000/api/blogs/update/${id}`,
@@ -111,16 +116,16 @@ const UpdateBlog = () => {
             <div className="mb-4">
               <label className="block mb-2 font-semibold">BLOG IMAGE</label>
               <img
-                src={
-                  blogImagePreview
-                    ? blogImagePreview
-                    : blogImage
-                    ? blogImage
-                    : "/imgPL.webp"
-                }
-                alt="Blog Main"
-                className="w-full h-48 object-cover mb-4 rounded-md"
-              />
+            src={
+              blogImagePreview
+                ? blogImagePreview
+                : blogImageUrl
+                ? blogImageUrl
+                : "/imgPL.webp"
+            }
+            alt="Blog Main"
+            className="w-full h-48 object-cover mb-4 rounded-md"
+            />
               <input
                 type="file"
                 className="w-full p-2 border rounded-md"

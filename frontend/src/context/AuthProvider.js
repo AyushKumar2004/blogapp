@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
     useEffect(()=>{
         async function fetchBlogs(){
             try{
-                const response=await axios.get("http://localhost:5000/api/blogs/all-blogs");
+                const response=await axios.get("http://localhost:5000/api/blogs/all-blogs",{withCredentials:true});
                 console.log(response);
                 setBlogs(response.data);
             }catch(error){
@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
                         }
                     });
                     console.log("this is profile",data);
-                    setProfile(data);
+                    setProfile(data?.user || data?.newUser);
                     setIsAuthenticated(true);
                 }
             }catch(error){
