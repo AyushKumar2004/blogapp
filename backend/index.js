@@ -20,7 +20,7 @@ app.use(fileUpload({
 }))
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:3000",  // allow React app
+    origin: process.env.FRONTEND_URL,  // allow React app
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],                 // allow cookies (if you're using them)
   }));
