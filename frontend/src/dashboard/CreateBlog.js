@@ -33,7 +33,7 @@ const CreateBlog = () => {
     formData.append("blogImage", blogImage);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/blogs/create",
+        `${process.env.REACT_APP_BACKEND_URL}/api/blogs/create`,
         formData,
         {
           withCredentials: true,

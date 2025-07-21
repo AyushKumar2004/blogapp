@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
+
 const MyBlogs = () => {
 
   const [myBlogs,setMyBlogs]=useState();
@@ -10,7 +11,7 @@ const MyBlogs = () => {
   useEffect(()=>{
     const fetchMyBlogs=async()=>{
       try{
-        const {data}=await axios.get('http://localhost:5000/api/blogs/my-blog',
+        const {data}=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/my-blog`,
           {
             withCredentials:true,
           }
@@ -27,7 +28,7 @@ const MyBlogs = () => {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:5000/api/blogs/delete/${id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/delete/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

@@ -8,7 +8,7 @@ function Creators() {
     const fetchCreators = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/api/users/admins",
+          `${process.env.REACT_APP_BACKEND_URL}/api/users/admins`,
           {
             withCredentials: true,
           }

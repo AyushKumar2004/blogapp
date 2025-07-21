@@ -10,13 +10,14 @@ const Navbar = () => {
 
     const [show,setShow]=useState(false)
     const {profile,isAuthenticated,setProfile,setIsAuthenticated}=useAuth();
+
     console.log(profile)
     const navigate=useNavigate();
 
     const handleLogout=async(e)=>{
         e.preventDefault();
         try{
-          const {data}=await axios.get("http://localhost:5000/api/users/logout",{
+          const {data}=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`,{
             withCredentials:true
           })
           toast.success(data.message)

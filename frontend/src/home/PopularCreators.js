@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 const PopularCreators = () => {
   const [admin,setAdmin]=useState([]);
   const fetchAdmin=async()=>{
-    const {data}=await axios.get("http://localhost:5000/api/users/admins",{
+    const {data}=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/admins`,{
       withCredentials:true,
     })
     console.log(data);

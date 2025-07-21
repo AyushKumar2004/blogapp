@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
     useEffect(()=>{
         async function fetchBlogs(){
             try{
-                const response=await axios.get("http://localhost:5000/api/blogs/all-blogs",{withCredentials:true});
+                const response=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/all-blogs`,{withCredentials:true});
                 console.log(response);
                 setBlogs(response.data);
             }catch(error){
@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
                 let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage (Go to login.jsx)
                 console.log(token);
                 if(token){
-                    const {data}=await axios.get("http://localhost:5000/api/users/my-profile",{
+                    const {data}=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/my-profile`,{
                         withCredentials:true,
                         headers:{
                             "Content-Type":"application/json",
