@@ -76,12 +76,12 @@ const UpdateBlog = () => {
           },
         }
       );
-      console.log(data);
+      //console.log(data);
       toast.success(data.message || "Blog Updated successfully");
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error(error.message || "Please fill the required fields");
+      toast.error( "Please fill the required fields");
     }
   }
 

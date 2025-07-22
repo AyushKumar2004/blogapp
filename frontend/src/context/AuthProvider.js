@@ -34,7 +34,7 @@ export const AuthProvider = ({children}) => {
                             "Content-Type":"application/json",
                         }
                     });
-                    console.log("this is profile",data);
+                    //console.log("this is profile",data);
                     setProfile(data?.user || data?.newUser);
                     setIsAuthenticated(true);
                 }

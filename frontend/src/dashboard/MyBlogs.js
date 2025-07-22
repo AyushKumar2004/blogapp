@@ -16,7 +16,7 @@ const MyBlogs = () => {
             withCredentials:true,
           }
         )
-        console.log('myblogs',data);
+        //console.log('myblogs',data);
         setMyBlogs(data);
       }catch(error){
         console.log(error);

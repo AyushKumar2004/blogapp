@@ -63,7 +63,7 @@ const Register = () => {
       navigate("/");
     }catch(error){
       console.log(error);
-      toast.error(error.message || "please fill required fields")
+      toast.error( "please fill required fields")
     }
   }
 

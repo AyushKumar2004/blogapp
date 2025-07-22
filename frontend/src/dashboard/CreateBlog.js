@@ -42,7 +42,7 @@ const CreateBlog = () => {
           },
         }
       );
-      console.log(data);
+      //console.log(data);
       toast.success(data.message || "User registered successfully");
       setTitle("");
       setCategory("");

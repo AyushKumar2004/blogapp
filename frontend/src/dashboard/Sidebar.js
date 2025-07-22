@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const Sidebar = ({component,setComponent}) => {
     const {profile,isAuthenticated,setIsAuthenticated}=useAuth();
-    console.log(profile);
+    //console.log(profile);
     const navigate=useNavigate();
 
     const handleComponents=(value)=>{

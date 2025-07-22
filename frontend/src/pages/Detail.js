@@ -20,7 +20,7 @@ const Detail = () => {
                 },
               }
             );
-            console.log(data);
+            //console.log(data);
             setBlogs(data)
             } catch (error) {
               console.log(error);
