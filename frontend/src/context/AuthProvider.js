@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) => {
         async function fetchBlogs(){
             try{
                 const response=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/all-blogs`,{withCredentials:true});
-                console.log(response);
+               // console.log(response);
                 setBlogs(response.data);
             }catch(error){
                 console.log(error);
@@ -26,7 +26,7 @@ export const AuthProvider = ({children}) => {
         async function fetchProfile(){
             try{
                 let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage (Go to login.jsx)
-                console.log(token);
+                //console.log(token);
                 if(token){
                     const {data}=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/my-profile`,{
                         withCredentials:true,
