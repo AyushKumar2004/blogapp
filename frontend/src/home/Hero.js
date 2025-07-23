@@ -29,7 +29,7 @@ const Hero = () => {
             </Link>
           )
         })
-      ):(<div className='text-center'>No Data Fouund</div>)}
+      ):(<div className='text-center'>Loading...</div>)}
     </div>
   )
 }

@@ -10,11 +10,12 @@ export const AuthProvider = ({children}) => {
     const [blogs,setBlogs]=useState();
     const [profile,setProfile]=useState();
     const [isAuthenticated,setIsAuthenticated]=useState(false)
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     
 
     useEffect(()=>{
         async function fetchBlogs(){
+            setIsLoading(true)
             try{
                 const response=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/all-blogs`,{withCredentials:true});
                // console.log(response);
@@ -22,8 +23,10 @@ export const AuthProvider = ({children}) => {
             }catch(error){
                 console.log(error);
             }
+            setIsLoading(false)
         }
         async function fetchProfile(){
+            setIsLoading(true)
             try{
                 let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage (Go to login.jsx)
                 //console.log(token);
