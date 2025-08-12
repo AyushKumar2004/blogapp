@@ -22,7 +22,7 @@ function App() {
   const location=useLocation();
   const hideNavbarFooter=["/dashboard","/login","/register"].includes(location.pathname);
   const {blogs,isAuthenticated}=useAuth();
-  console.log(blogs)
+  //console.log(blogs)
 
   return (
     <div>

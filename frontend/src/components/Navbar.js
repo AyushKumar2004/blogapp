@@ -11,7 +11,7 @@ const Navbar = () => {
     const [show,setShow]=useState(false)
     const {profile,isAuthenticated,setProfile,setIsAuthenticated}=useAuth();
 
-    console.log(profile)
+    //console.log(profile)
     const navigate=useNavigate();
 
     const handleLogout=async(e)=>{

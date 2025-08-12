@@ -8,8 +8,8 @@ import MyBlogs from "../dashboard/MyBlogs"
 
 const Dashboard = () => {
   const {profile,isAuthenticated}=useAuth();
-  console.log(profile);
-  console.log(isAuthenticated)
+  //console.log(profile);
+  //console.log(isAuthenticated)
 
   const [component,setComponent]=useState("My Blogs")
 
