@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 const MyBlogs = () => {
 
   const [myBlogs,setMyBlogs]=useState();
-  console.log(myBlogs)
+  //console.log(myBlogs)
   useEffect(()=>{
     const fetchMyBlogs=async()=>{
       try{

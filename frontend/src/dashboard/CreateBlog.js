@@ -12,7 +12,7 @@ const CreateBlog = () => {
   const [blogImagePreview, setBlogImagePreview] = useState("");
 
   const changePhotoHandler = (e) => {
-    console.log(e);
+    //console.log(e);
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);

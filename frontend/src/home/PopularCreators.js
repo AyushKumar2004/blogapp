@@ -7,7 +7,7 @@ const PopularCreators = () => {
     const {data}=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/admins`,{
       withCredentials:true,
     })
-    console.log(data);
+    //console.log(data);
     setAdmin(data);
   }
 

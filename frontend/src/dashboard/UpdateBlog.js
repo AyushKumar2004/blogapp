@@ -16,7 +16,7 @@ const UpdateBlog = () => {
   const [blogImagePreview, setBlogImagePreview] = useState("");
 
   const changePhotoHandler = (e) => {
-    console.log(e);
+    //console.log(e);
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -38,7 +38,7 @@ const UpdateBlog = () => {
             },
           }
         );
-        console.log(data);
+        //console.log(data);
         toast.success( "blog fetched successfully");
         setTitle(data?.title);
         setCategory(data?.category);
@@ -60,7 +60,7 @@ const UpdateBlog = () => {
     formData.append("about", about);
 
     if(blogImageFile){
-      console.log(blogImageFile);
+      //console.log(blogImageFile);
       formData.append("blogImage", blogImageFile);
     }
     

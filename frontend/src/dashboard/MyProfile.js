@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthProvider';
 const MyProfile = () => {
 
   const {profile,isAuthenticated,setIsAuthenticated}=useAuth();
-  console.log(profile?.user);
+  //console.log(profile?.user);
 
 
   return (

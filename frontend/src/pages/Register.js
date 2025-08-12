@@ -19,7 +19,7 @@ const Register = () => {
   const [photoPreview,setPhotoPreview]=useState();
 
   const changePhotoHandler=(e)=>{
-    console.log(e);
+    //console.log(e);
     const file=e.target.files[0];
     const reader=new FileReader();
     reader.readAsDataURL(file);
@@ -46,7 +46,7 @@ const Register = () => {
           "Content-Type":"multipart/form-data"
         }
       });
-      console.log("this is my data",data);
+      //console.log("this is my data",data);
       toast.success(data.message || 'User Registered Successful')
       
       localStorage.setItem("jwt", data.token); 
